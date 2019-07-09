@@ -23,26 +23,30 @@ void consulta(void){
     unsigned int matricula = -1, achou = 0;
     if(!(fim)){
 	while(matricula != 0){
-	    printf("MATRICULA: ");
-	    scanf("%u", &matricula);
-
 	    #ifdef OS_Windows
 		system("cls");
 	    #else
 		system("clear");
 	    #endif
 
+	    printf("MATRICULA: ");
+	    scanf("%u", &matricula);
 	    sprintf(line2, "MATRICULA: %u\n", matricula);
 	    while(fread(line, sizeof(char), 100, pont_arq)){
-		if(!(strcmp(line, line2))){
-		    printf("==================================\n");
-		    achou = 1;
-		}
-		if(achou) {
-		    printf("%s", line);
-		    achou++;
-		}
-		if(achou == 10) achou = 0;
+			if(!(strcmp(line, line2))){
+				printf("==================================\n");
+				achou = 1;
+			}
+			if(achou) {
+				printf("%s", line);
+				achou++;
+			}
+			if(achou == 10) {
+				achou = 0;
+	    		printf("PRESSIONE QUALQUER TECLA PARA CONTINUAR\n");
+	    		getchar();
+	    		getchar();
+			}
 	    }
 	    rewind(pont_arq);
 	}
