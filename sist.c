@@ -31,7 +31,7 @@ void main(void){
 	if(op == 2) consulta();
 	if(op == 3) altera();
 	if(op == 4) {
-	    int retorno;
+	    int retorno=1;
 	    while(retorno != 0) retorno = lista();
 	}
     }
